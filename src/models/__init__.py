@@ -20,12 +20,21 @@ from src.models.orderbook import (
     OrderBookLevel,
     OrderBookResponse,
 )
+from src.models.position import (
+    FillResult,
+    ManagedOrder,
+    PositionStatus,
+    TrackedPosition,
+    TradeResult,
+)
 
 __all__ = [
+    # Market models
     "Market",
     "MarketResponse",
     "MarketsResponse",
     "MarketStatus",
+    # Order models
     "Order",
     "OrderAction",
     "OrderResponse",
@@ -37,8 +46,15 @@ __all__ = [
     "Position",
     "PositionsResponse",
     "BalanceResponse",
+    # OrderBook models
     "OrderBook",
     "OrderBookDelta",
     "OrderBookLevel",
     "OrderBookResponse",
+    # Position/Trade models
+    "FillResult",
+    "ManagedOrder",
+    "PositionStatus",
+    "TrackedPosition",
+    "TradeResult",
 ]
