@@ -20,10 +20,8 @@ from datetime import datetime
 from config.settings import Settings, get_settings, Environment
 from config.strategy_params import StrategyParams, DEFAULT_STRATEGY
 from src.utils.logger import setup_logger, get_logger
-from src.auth.kalshi_auth import KalshiAuth
 from src.api.rest_client import KalshiRestClient
 from src.api.websocket_client import KalshiWebSocketClient
-from src.api.rate_limiter import RateLimiter
 from src.scanner.market_scanner import MarketScanner
 from src.scanner.spread_analyzer import SpreadAnalyzer
 from src.execution.order_manager import OrderManager
@@ -58,30 +56,11 @@ class TradingBot:
             logger.info(f"Initializing bot in {self.settings.environment.value} mode")
             logger.info(f"API URL: {self.settings.base_url}")
 
-            # Initialize authentication
-            self.auth = KalshiAuth(
-                key_id=self.settings.kalshi_api_key,
-                private_key_path=str(self.settings.private_key_path),
-            )
-
-            # Initialize rate limiter
-            rate_limiter = RateLimiter(
-                read_limit=self.settings.read_rate_limit,
-                write_limit=self.settings.write_rate_limit,
-            )
-
-            # Initialize REST client
-            self.rest_client = KalshiRestClient(
-                auth=self.auth,
-                base_url=self.settings.base_url,
-                rate_limiter=rate_limiter,
-            )
+            # Initialize REST client (handles auth internally)
+            self.rest_client = KalshiRestClient(settings=self.settings)
 
             # Initialize WebSocket client
-            self.ws_client = KalshiWebSocketClient(
-                auth=self.auth,
-                ws_url=self.settings.ws_url,
-            )
+            self.ws_client = KalshiWebSocketClient(settings=self.settings)
 
             # Initialize scanner components
             self.scanner = MarketScanner(
