@@ -8,7 +8,13 @@ from src.api.websocket_client import (
     MessageType,
 )
 
+# Mock clients for testing
+from src.api.client import BaseKalshiClient, KalshiClientProtocol
+from src.api.mock_client import MockKalshiClient, create_sample_markets, create_sample_orderbook
+from src.api.models import Market as MockMarket, OrderBook as MockOrderBook, OrderBookLevel as MockOrderBookLevel
+
 __all__ = [
+    # Real clients
     "RateLimiter",
     "RequestType",
     "KalshiRestClient",
@@ -16,4 +22,13 @@ __all__ = [
     "KalshiWebSocketClient",
     "ChannelType",
     "MessageType",
+    # Mock clients for testing
+    "BaseKalshiClient",
+    "KalshiClientProtocol",
+    "MockKalshiClient",
+    "MockMarket",
+    "MockOrderBook",
+    "MockOrderBookLevel",
+    "create_sample_markets",
+    "create_sample_orderbook",
 ]
