@@ -1,5 +1,6 @@
 """API client module."""
 
+# Real API clients
 from src.api.rate_limiter import RateLimiter, RequestType
 from src.api.rest_client import KalshiAPIError, KalshiRestClient
 from src.api.websocket_client import (
@@ -13,18 +14,18 @@ from src.api.client import BaseKalshiClient, KalshiClientProtocol
 from src.api.mock_client import MockKalshiClient, create_sample_markets, create_sample_orderbook
 from src.api.models import Market as MockMarket, OrderBook as MockOrderBook, OrderBookLevel as MockOrderBookLevel
 
-# Mock clients for execution testing
+# Mock clients and types for execution testing
 from src.api.mock_clients import (
     Balance,
     Fill,
     MockRestClient,
     MockWebSocketClient,
-    Order as MockOrder,
-    OrderAction as MockOrderAction,
-    OrderSide as MockOrderSide,
-    OrderStatus as MockOrderStatus,
-    Position as MockPosition,
-    SpreadOpportunity as MockSpreadOpportunity,
+    Order,
+    OrderAction,
+    OrderSide,
+    OrderStatus,
+    Position,
+    SpreadOpportunity,
 )
 
 __all__ = [
@@ -45,15 +46,15 @@ __all__ = [
     "MockOrderBookLevel",
     "create_sample_markets",
     "create_sample_orderbook",
-    # Mock clients for execution testing
+    # Mock clients and types for execution testing
     "Balance",
     "Fill",
     "MockRestClient",
     "MockWebSocketClient",
-    "MockOrder",
-    "MockOrderAction",
-    "MockOrderSide",
-    "MockOrderStatus",
-    "MockPosition",
-    "MockSpreadOpportunity",
+    "Order",
+    "OrderAction",
+    "OrderSide",
+    "OrderStatus",
+    "Position",
+    "SpreadOpportunity",
 ]

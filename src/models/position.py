@@ -5,7 +5,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Optional
 
-from src.api import OrderSide
+from src.api.mock_clients import OrderSide
 
 
 class PositionStatus(str, Enum):
